@@ -49,7 +49,7 @@ app.get(`/team`, function (req, res) { // All of Team Users
 })
 
 app.get(`/team/rank`, function (req, res) {
-    db.query(`select * from team order by rank desc;`, (err, rank) => {
+    db.query('select * from team order by rank_of_team;', (err, rank) => {
         if (!err) {
             res.send({rank})
         } else {

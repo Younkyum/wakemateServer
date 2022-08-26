@@ -48,9 +48,20 @@ app.get(`/team`, function (req, res) { // All of Team Users
     })  
 })
 
+app.get(`/team/rank`, function (req, res) {
+    db.query(`SELECT * FROM team ORDER BY rank ASC;`, (err, rank) => {
+        if (!err) {
+            res.send({rank})
+        } else {
+            res.send(err)
+        }
+    })
+})
 
 
 // POST
+
+
 
 app.post(`/user/wake`, function (req, res) { // Make User Wake
     db.query(`UPDATE user SET is_wake_up=? WHERE user_id=?;`, [req.body.is_wake_up, req.body.user_id], (err, data) => { // WAKE UP 여부 확인
